@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import {
   isHourInputValid,
-  isInputLimitValid,
+  isInRange,
   isMinuteInputValid,
   isSecondInputValid
 } from './timepicker.utils';
@@ -40,7 +40,7 @@ export function getSecondsValidator(): ValidatorFn {
 export function getLimitsValidator(min: Date, max: Date): ValidatorFn {
   return ({ value }: AbstractControl): ValidationErrors | null => {
 
-    if (isInputLimitValid({
+    if (isInRange({
       hour: value.hours,
       minute: value.minutes,
       seconds: value.seconds
